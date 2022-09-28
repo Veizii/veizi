@@ -40,6 +40,6 @@ public class ProvaMoto {
         m.accelera(50f);
 
         System.out.println(m.info());
-
+        
     }
 }
