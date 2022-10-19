@@ -170,25 +170,29 @@ public class Persona3 {
 
 
     public Integer calcolaEta() {
-        int giorno = 0,mese = 0,anno = 0,giornoCorrente,meseCorrente,annoCorrente,eta;
-        String[] splitted = dataDiNascita.split("/");
-        int v[] = new int[splitted.length];
-
+        int giorno = 0,mese = 0,anno = 0,giornoCorrente,meseCorrente,annoCorrente,eta = 0;
         ZonedDateTime dataCorrente = ZonedDateTime.now();
         
+        String[] splitted = dataDiNascita.split("/");
+        int v[] = new int[splitted.length];
+        for (int i = 0; i < splitted.length; i++) {
+            v[i] = Integer.parseInt(splitted[i]);
+        }
         
-        v[0]=giorno;
-        v[1]=mese;
-        v[2]=anno;
+        giorno=v[0];
+        mese=v[1];
+        anno=v[2];
         
         giornoCorrente=dataCorrente.getDayOfMonth();
         meseCorrente=dataCorrente.getMonthValue();
         annoCorrente=dataCorrente.getYear();
         
         eta=annoCorrente-anno;
-        
+        if(giornoCorrente==giorno && meseCorrente==mese){
+            eta+=1;
+            
+        }
         return eta;
-        
     }
 
     public String info() {
